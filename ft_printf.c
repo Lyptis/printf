@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:31:26 by svanmeen          #+#    #+#             */
-/*   Updated: 2022/11/29 14:42:04 by svanmeen         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:02:53 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_arg(char c, va_list ap)
 	if (c == 's')
 		count = ft_putstr_fd(va_arg(ap, char *), 1);
 	if (c == 'p')
-		count = ft_putptr(va_arg(ap, uintptr_t));
+		count = ft_putptr(va_arg(ap, unsigned long long));
 	if (c == 'd')
 		count = ft_putnbr_fd((int)va_arg(ap, int), 1, 0);
 	if (c == 'i')

@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 15:27:16 by svanmeen          #+#    #+#             */
-/*   Updated: 2022/11/29 14:41:29 by svanmeen         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:01:58 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <inttypes.h>
+# include <limits.h>
 
 int	ft_printf(const char *format, ...);
 

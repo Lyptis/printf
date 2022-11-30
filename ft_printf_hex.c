@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:57:36 by svanmeen          #+#    #+#             */
-/*   Updated: 2022/11/29 14:41:08 by svanmeen         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:13:17 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	ft_put_hex_ptr_fd(unsigned long long nb, int fd, int len)
 	base = "0123456789abcdef";
 	if (nb >= 16)
 	{
-		len = ft_put_hexm_nbr_fd(nb / 16, fd, len);
+		len = ft_put_hex_ptr_fd(nb / 16, fd, len);
 		len += ft_putchar_fd(base[(nb % 16)], fd);
 		return (len);
 	}
@@ -64,6 +64,8 @@ int	ft_putptr(unsigned long long val)
 {
 	int	len;
 
+	if (val == 0)
+		return (ft_putstr_fd("(nil)", 1));
 	len = write(1, "0x", 2);
 	if (len < 0)
 		return (-1);
