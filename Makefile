@@ -6,7 +6,7 @@
 #    By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 11:01:12 by svanmeen          #+#    #+#              #
-#    Updated: 2022/11/30 10:08:53 by svanmeen         ###   ########.fr        #
+#    Updated: 2022/12/01 11:30:10 by svanmeen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FLAGS	=	-Wall -Wextra -Werror
 
 .PHONY:		re fclean clean all
 
-.c.o:		Makefile ${HSRC}
+.c.o:		${HSRC}
 			${GCC} ${FLAGS} -I ${HSRC} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}

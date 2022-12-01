@@ -6,7 +6,7 @@
 /*   By: svanmeen <svanmeen@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:57:36 by svanmeen          #+#    #+#             */
-/*   Updated: 2022/11/30 10:13:17 by svanmeen         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:27:43 by svanmeen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@ int	ft_put_hexc_nbr_fd(unsigned int nb, int fd, int len)
 	if (nb >= 16)
 	{
 		len = ft_put_hexc_nbr_fd(nb / 16, fd, len);
-		len += ft_putchar_fd(base[(nb % 16)], fd);
-		return (len);
+		if (len < 0 || ft_putchar_fd(base[(nb % 16)], fd) < 0)
+			return (-1);
+		return (len + 1);
 	}
 	else
-		len += ft_putchar_fd(base[nb], fd);
+	{
+		if (len < 0 || ft_putchar_fd(base[nb], fd) < 0)
+			return (-1);
+		len++;
+	}
 	return (len);
 }
 
@@ -36,15 +41,20 @@ int	ft_put_hexm_nbr_fd(unsigned int nb, int fd, int len)
 	if (nb >= 16)
 	{
 		len = ft_put_hexm_nbr_fd(nb / 16, fd, len);
-		len += ft_putchar_fd(base[(nb % 16)], fd);
-		return (len);
+		if (len < 0 || ft_putchar_fd(base[(nb % 16)], fd) < 0)
+			return (-1);
+		return (len + 1);
 	}
 	else
-		len += ft_putchar_fd(base[nb], fd);
+	{
+		if (len < 0 || ft_putchar_fd(base[nb], fd) < 0)
+			return (-1);
+		len++;
+	}
 	return (len);
 }
 
-static int	ft_put_hex_ptr_fd(unsigned long long nb, int fd, int len)
+static int	ft_put_hex_ptr_fd(uintptr_t nb, int fd, int len)
 {
 	char	*base;
 
@@ -52,20 +62,23 @@ static int	ft_put_hex_ptr_fd(unsigned long long nb, int fd, int len)
 	if (nb >= 16)
 	{
 		len = ft_put_hex_ptr_fd(nb / 16, fd, len);
-		len += ft_putchar_fd(base[(nb % 16)], fd);
-		return (len);
+		if (len < 0 || ft_putchar_fd(base[(nb % 16)], fd) < 0)
+			return (-1);
+		return (len + 1);
 	}
 	else
-		len += ft_putchar_fd(base[nb], fd);
+	{
+		if (len < 0 || ft_putchar_fd(base[nb], fd) < 0)
+			return (-1);
+		len++;
+	}
 	return (len);
 }
 
-int	ft_putptr(unsigned long long val)
+int	ft_putptr(uintptr_t val)
 {
 	int	len;
 
-	if (val == 0)
-		return (ft_putstr_fd("(nil)", 1));
 	len = write(1, "0x", 2);
 	if (len < 0)
 		return (-1);
